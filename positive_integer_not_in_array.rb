@@ -11,27 +11,42 @@ def solution(arr)
 
 # 	#comparing arr_sorted[i] and arr_sorted[i+1]
 	arr_sorted.each_index do |i|
+        
+        #the array starts with 1
+		if arr_sorted[0] == 1
 
-		if arr_sorted[i+1] != nil
+			if arr_sorted[i+1] != nil
 
-		    if (arr_sorted[i+1] - arr_sorted[i]) > 1 
-		    
-			    minInt = arr_sorted[i] + 1
-			    puts minInt
-			    puts "The minimal positive integer is #{minInt}!"
-			    break
-		    end
-		
-		else
-			minInt = arr_sorted[i] + 1
-			    puts minInt
-			    puts "The minimal positive integer is #{minInt}!" 
+			    if (arr_sorted[i+1] - arr_sorted[i]) > 1 
+			    
+				    minInt = arr_sorted[i] + 1
+				    puts minInt
+				    puts "The minimal positive integer is #{minInt}!"
+				    break
+			    end
+			
+			#when the array reach to the very last index
+			else
+				
+				minInt = arr_sorted[i] + 1
+				    puts minInt
+				    puts "The minimal positive integer is #{minInt}!"
+				    break 
+			end
+
+		else 
+
+			#when the array doesn't start with 1		
+			minInt = 1
+				    puts minInt
+				    puts "The minimal positive integer is #{minInt}!"
+				    break
 		end
 	end
 end
 
-arr = (1..100000).to_a.shuffle
+arr = (-100000..100000).to_a.shuffle
 start = Time.new
-arr.delete 70
+arr.delete 724
 solution(arr)
 puts Time.new - start
